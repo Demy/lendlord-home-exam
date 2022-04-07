@@ -7,6 +7,9 @@ module.exports = class Users {
   async updateOne(query, doc) {
     return usersModel.updateOne(query, doc)
   }
+  async updateMany(query, doc) {
+    return usersModel.updateMany(query, doc)
+  }
 
   async findOne(query, projection = {}) {
     return usersModel.findOne(query).select(projection)
@@ -14,6 +17,10 @@ module.exports = class Users {
 
   async find(query, projection = {}, limit = Number.MAX_SAFE_INTEGER) {
     return usersModel.find(query).limit(limit).select(projection)
+  }
+
+  async getAll(limit = Number.MAX_SAFE_INTEGER) {
+    return usersModel.find({}).limit(limit)
   }
 
   async deleteOne(query) {
